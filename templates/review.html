@@ -30,8 +30,15 @@
 
     <!-- Контейнер для кнопок -->
     <div id="next-btn-container" class="d-flex justify-content-center mt-3">
-      <button id="retake-btn" type="button" class="btn btn-secondary me-2">Пройти тест ещё раз</button>
-      <button id="next-day-btn" type="button" class="btn btn-primary me-2">Перейти к следующему дню</button>
+      <!-- Кнопка "Пройти тест ещё раз" -->
+      <form method="POST" action="{{ url_for('retake_test') }}">
+        <button type="submit" class="btn btn-secondary me-2">Пройти тест ещё раз</button>
+      </form>
+
+      <!-- Кнопка "Перейти к следующему дню" -->
+      <form method="POST" action="{{ url_for('next_day') }}">
+        <button type="submit" class="btn btn-primary me-2" id="next-day-btn">Перейти к следующему дню</button>
+      </form>
     </div>
 
     <!-- Блок рекомендаций -->
@@ -53,8 +60,6 @@ document.addEventListener("DOMContentLoaded", function() {
   const resultsBlock = document.getElementById("results");
   const correctPercentageSpan = document.getElementById("correct-percentage");
   const recommendationContent = document.getElementById("recommendation-content");
-  const retakeBtn = document.getElementById("retake-btn");
-  const nextDayBtn = document.getElementById("next-day-btn");
   const summaryBtn = document.getElementById("summary-btn");
   const finalBtnContainer = document.getElementById("final-btn-container");
 
@@ -99,9 +104,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
       // Если 30-й день, показываем кнопку завершения
       if (data.day === 30) {
-          nextDayBtn.disabled = true;
-          nextDayBtn.innerText = "Обучение завершено";
-          nextDayBtn.classList.add("btn-secondary");
+          document.getElementById("next-day-btn").disabled = true;
+          document.getElementById("next-day-btn").innerText = "Обучение завершено";
+          document.getElementById("next-day-btn").classList.add("btn-secondary");
           finalBtnContainer.style.display = "block";
       } else {
           finalBtnContainer.style.display = "none";
