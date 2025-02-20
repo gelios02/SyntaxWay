@@ -43,7 +43,7 @@
 
 1. **Клонируйте репозиторий**:
    ```bash
-   git clone https://github.com/gelios_02/syntaxway.git
+   git clone https://github.com/gelios02/syntaxway.git
    cd syntaxway
    ```
 
